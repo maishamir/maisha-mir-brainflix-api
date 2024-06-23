@@ -36,7 +36,6 @@ app.get("/videos", (req, res) => {
       image: `images/image${index}.jpg`,
     }));
       res.json(strippedVideoData);
-      console.log(strippedVideoData)
   } catch (e) {
     console.error("Unable to handle GET /videos request: ", e);
     res.status(500).json({ message: "Internal Server Error" });
@@ -55,7 +54,6 @@ app.get("/videos/:id", (req, res) => {
       video.image = `images/image${vidIndex}.jpg`;
       res.json(video);
     }
-    console.log(video);
   } catch (e) {
     console.error("Unable to handle GET /videos/:id request", e);
     res.status(500).json({ message: "Internal Server Error" });
