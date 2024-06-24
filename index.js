@@ -10,7 +10,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
 
-app.use("/images", express.static("public/images"));
+app.use("/images", express.static(__dirname + "public/images"));
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
@@ -81,6 +81,7 @@ app.post("/videos", (req, res) => {
       video: "https://unit-3-project-api-0a5620414506.herokuapp.com/stream",
       timestamp: Date.now(),
       comments: [],
+      image: "images/placeholder.jpg"
     };
     // todo: Insert the new tree into our existing video array
     videoData.push(newVideo);
