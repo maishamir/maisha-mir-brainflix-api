@@ -10,7 +10,7 @@ app.use(express.json());
 
 const PORT = process.env.PORT || 8080;
 
-app.use("/images", express.static(__dirname + "public/images"));
+app.use("/images", express.static("public/images"));
 
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
@@ -33,7 +33,7 @@ app.get("/videos", (req, res) => {
       id: video.id,
       title: video.title,
       channel: video.channel,
-      image: `images/image${index}.jpg`,
+      image: video.image,
     }));
     res.json(strippedVideoData);
   } catch (e) {
@@ -51,7 +51,7 @@ app.get("/videos/:id", (req, res) => {
       res.status(404).json({ message: "No video with that id exists" });
     } else {
       const vidIndex = videoData.indexOf(video);
-      video.image = `images/image${vidIndex}.jpg`;
+      video.image = video.image;
       res.json(video);
     }
   } catch (e) {
